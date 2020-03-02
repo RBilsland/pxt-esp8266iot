@@ -3,6 +3,7 @@
   "ESP8266_IoT.State.Success|block": "Success",
   "ESP8266_IoT.connectKidsiot|block": "Connect KidsIot with userToken: %userToken Topic: %topic",
   "ESP8266_IoT.connectThingSpeak|block": "connect thingspeak",
+  "ESP8266_IoT.connectSonicPiOSC|block": "Connect SonicPi OSC",
   "ESP8266_IoT.connectWifi|block": "connect Wifi SSID = %ssid|KEY = %pw",
   "ESP8266_IoT.disconnectKidsiot|block": "Disconnect with kidsiot",
   "ESP8266_IoT.initWIFI|block": "set ESP8266|RX %tx|TX %rx|Baud rate %baudrate",
@@ -19,5 +20,6 @@
   "ESP8266_IoT|block": "ESP8266_IoT",
   "{id:category}ESP8266_IoT": "ESP8266_IoT :D",
   "{id:subcategory}KidsIot": "KidsIot",
-  "{id:subcategory}ThingSpeak": "ThingSpeak"
+  "{id:subcategory}ThingSpeak": "ThingSpeak",
+  "{id:subcategory}SonicPiOSC": "SonicPi OSC"
 }
