@@ -300,7 +300,7 @@ namespace ESP8266_IoT {
     //% block="connect SonicPi OSC"
     //% write_api_key.defl=your_write_api_key
     //% subcategory="SonicPiOSC"
-    export function connectThingSpeak() {
+    export function connectSonicPiOSC() {
         if (wifi_connected && kitsiot_connected == false) {
             thingspeak_connected = false
             let text = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
