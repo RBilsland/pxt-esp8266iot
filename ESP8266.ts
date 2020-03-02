@@ -7,6 +7,7 @@ namespace ESP8266_IoT {
     let wifi_connected: boolean = false
     let thingspeak_connected: boolean = false
     let kitsiot_connected: boolean = false
+    let sonicpiosc_connected: boolean = false
     let last_upload_successful: boolean = false
     let userToken_def: string = ""
     let topic_def: string = ""
@@ -82,6 +83,7 @@ namespace ESP8266_IoT {
         wifi_connected = false
         thingspeak_connected = false
         kitsiot_connected = false
+		sonicpiosc_connected = false
         sendAT("AT+CWJAP=\"" + ssid + "\",\"" + pw + "\"", 0) // connect to Wifi router
         wifi_connected = waitResponse()
         basic.pause(100)
@@ -289,5 +291,64 @@ namespace ESP8266_IoT {
                 basic.pause(20)
             }
         })
+    }
+	
+	
+    /**
+    * Connect to SonicPiOSC
+    */
+    //% block="connect SonicPi OSC"
+    //% write_api_key.defl=your_write_api_key
+    //% subcategory="SonicPiOSC"
+    export function connectThingSpeak() {
+        if (wifi_connected && kitsiot_connected == false) {
+            thingspeak_connected = false
+            let text = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
+            sendAT(text, 0) // connect to website server
+            thingspeak_connected = waitResponse()
+            basic.pause(100)
+        }
+    }
+    /**
+    * Connect to SonicPiOSC and set data. 
+    */
+    //% block="set data to send SonicPi OSC|Write API key = %write_api_key|Field 1 = %n1|Field 2 = %n2|Field 3 = %n3|Field 4 = %n4|Field 5 = %n5|Field 6 = %n6|Field 7 = %n7|Field 8 = %n8"
+    //% write_api_key.defl=your_write_api_key
+    //% subcategory="SonicPiOSC"
+    export function setdata(write_api_key: string, n1: number, n2: number, n3: number, n4: number, n5: number, n6: number, n7: number, n8: number) {
+        if (thingspeak_connected) {
+            toSendStr = "GET /update?api_key="
+                + write_api_key
+                + "&field1="
+                + n1
+                + "&field2="
+                + n2
+                + "&field3="
+                + n3
+                + "&field4="
+                + n4
+                + "&field5="
+                + n5
+                + "&field6="
+                + n6
+                + "&field7="
+                + n7
+                + "&field8="
+                + n8
+        }
+    }
+    /**
+    * upload data. It would not upload anything if it failed to connect to Wifi or SonicPiOSC.
+    */
+    //% block="Upload data to SonicPi OSC"
+    //% subcategory="SonicPiOSC"
+    export function uploadData() {
+        if (thingspeak_connected) {
+            last_upload_successful = false
+            sendAT("AT+CIPSEND=" + (toSendStr.length + 2), 100)
+            sendAT(toSendStr, 100) // upload data
+            last_upload_successful = waitResponse()
+            basic.pause(100)
+        }
     }
 }
