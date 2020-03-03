@@ -19,7 +19,7 @@
   "ESP8266_IoT.wifiState|block": "Wifi连接 %State",
   "ESP8266_IoT|block": "IoT物联网",
   "{id:category}ESP8266_IoT": "IoT物联网",
-  "{id:subcategory}KidsIot": "KidsIot",
+  "{id:subcategory}KidsIot": "KidsIot :D",
   "{id:subcategory}ThingSpeak": "ThingSpeak",
   "{id:subcategory}SonicPiOSC": "SonicPi OSC"
 }
