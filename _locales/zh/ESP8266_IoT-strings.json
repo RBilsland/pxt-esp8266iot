@@ -20,5 +20,6 @@
   "ESP8266_IoT|block": "IoT物联网",
   "{id:category}ESP8266_IoT": "IoT物联网",
   "{id:subcategory}KidsIot": "KidsIot",
-  "{id:subcategory}ThingSpeak": "ThingSpeak"
+  "{id:subcategory}ThingSpeak": "ThingSpeak",
+  "{id:subcategory}SonicPiOSC": "SonicPi OSC"
 }
