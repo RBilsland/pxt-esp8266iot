@@ -9,7 +9,6 @@
     "files": [
         "README.md",
         "ESP8266.ts",
-        "_locales/zh/ESP8266_IoT-strings.json"
     ],
     "testFiles": [
         "tests.ts"
