@@ -302,10 +302,10 @@ namespace ESP8266_IoT {
     //% subcategory="SonicPiOSC"
     export function connectSonicPiOSC() {
         if (wifi_connected && kitsiot_connected == false) {
-            thingspeak_connected = false
+            sonicpiosc_connected = false
             let text = "AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80"
             sendAT(text, 0) // connect to website server
-            thingspeak_connected = waitResponse()
+            sonicpiosc_connected = waitResponse()
             basic.pause(100)
         }
     }
